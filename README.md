@@ -8,7 +8,7 @@
 pip install pygame
 ```
 
-Install pytorrch according to your OS ![https://pytorch.org](link)
+Install pytorrch according to your OS ![https://pytorch.org]
 
 
 ## Files
