@@ -7,13 +7,14 @@
 ```bash
 pip install pygame
 ```
+
 Install pytorrch according to your OS ![https://pytorch.org](link)
 
 
 ## Files
-Agent.py defines the class to make your environment. Play around with the Robot class and if impossible let's build a better environment.
-AI.py has all the algorithms defined
-ReplayBuffer.py defines the class to store all (state ,action ,next_state, reward ,done) transitions
+**Agent.py** defines the class to make your environment. Play around with the Robot class and if impossible let's build a better environment.<br/>
+**AI.py** has all the algorithms defined<br/>
+**ReplayBuffer.py** defines the class to store all **(state ,action ,next_state, reward ,done)** transitions<br/>
 
 <!--
 ## Heuristic 
