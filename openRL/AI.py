@@ -12,11 +12,11 @@ class Algorithm(ABC):
         super().__init__()
 
     @abstractmethod
-    def act(self):
+    def act(self,state):
         pass
 
     @abstractmethod
-    def compute_loss(self):
+    def compute_loss(self, replay_buffer):
         pass
     
     @staticmethod
@@ -26,10 +26,16 @@ class Algorithm(ABC):
             l.append([i])
         return torch.LongTensor(l)
 
+    @abstractmethod
+    def save_model(self,PATH):
+        pass
 
+
+# TODO:
 class DDPG:
     pass
 
+# TODO:
 class PPO:
     pass
 
@@ -46,6 +52,7 @@ class DQN(Algorithm):
         self.critic.load_state_dict(self.actor.state_dict())
         self.optimizer = optim.Adam(self.actor.parameters())
         self.gamma = 0.8
+        (self.actor.parameters)
 
     def act(self, state):
         if random.random() > self.epsilon:
@@ -57,6 +64,7 @@ class DQN(Algorithm):
     
     def copy_weights(self):
         self.critic.load_state_dict(self.actor.state_dict())
+
 
 
     def compute_loss(self, replay_buffer):
@@ -82,6 +90,9 @@ class DQN(Algorithm):
         self.optimizer.step()
     
         return loss
+
+    def save_model(self,PATH):
+        torch.save(self.actor.state_dict(),PATH)
 
 # usage model = DQL()
 
@@ -130,8 +141,8 @@ class Net(nn.Module):  # TODO improve the class definition
     def __init__(self, input_dim, output_dim):
         super(Net, self).__init__()
         self.seed = torch.manual_seed(0)
-        self.fc1 = nn.Linear(input_dim, 256)
-        self.fc2 = nn.Linear(256, output_dim)
+        self.fc1 = nn.Linear(input_dim, 64)
+        self.fc2 = nn.Linear(64, output_dim)
 
     # Called with either one element to determine next action, or a batch
     # during optimization. Returns tensor([[left0exp,right0exp]...]).

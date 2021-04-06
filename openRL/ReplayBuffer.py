@@ -12,7 +12,7 @@ class Memory(ABC):
         max_size : int
     
     @abstractmethod
-    def add(self):
+    def add(self,state, action, reward, next_state, done):
         pass
 
     @abstractmethod
@@ -24,7 +24,6 @@ class ReplayBuffer(Memory):
     def __init__(self, batch_size = 32, size= 100000):
         super().__init__()
         self.memory = deque(maxlen=size) # popleft()
-        self.memory 
         self.max_size = size
         self.batch_size= batch_size
         self.pos = 0

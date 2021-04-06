@@ -1,7 +1,7 @@
 # import torchvision.transforms as T
 # from PIL import Image
-from AI import Net, DQL, DQN
-from ReplayBuffer import ReplayBuffer
+from openRL.AI import Net, DQL, DQN
+from openRL.ReplayBuffer import ReplayBuffer
 import pygame
 import torch
 import math
@@ -31,7 +31,7 @@ class Agent(ABC):
         pass
 
     @abstractmethod
-    def step(self):
+    def step(self, action):
         pass
 
     @abstractmethod
@@ -43,8 +43,14 @@ class Agent(ABC):
         pass
 
     @abstractmethod
-    def take_action(self):
+    def take_action(self, action):
         pass
+
+    @staticmethod
+    def log_data(input):
+        pass
+
+
 
 class Robot(Agent):
     def __init__(self,
@@ -99,6 +105,7 @@ class Robot(Agent):
         done = False
         reward = 0
 
+        # went outside the boundary
         if self.terminate():
             self.reward = -10
             # print("Terminating!")
@@ -108,15 +115,15 @@ class Robot(Agent):
             self.clock.tick(SPEED)
             return self.get_state(), reward, done
 
+        # reached goal
         elif abs(self.robot_pos[0] -
                  self.goal_pos[0]) <= self.step_size and abs(
                      self.robot_pos[1] - self.goal_pos[1]) <= self.step_size:
             reward = 10
-
+            done = True
             self.graphics()
             self.clock.tick(SPEED)
             return self.get_state(), reward, done
-            #print("goal reached!")
 
         else:
             self.graphics()
@@ -161,74 +168,84 @@ class Robot(Agent):
 ###################################
 # Q-Learning with neural network  #
 ###################################
-remember = ReplayBuffer(32, 1000)
-r = Robot(400, 400)
-model = DQL(0.99, 4, 4)
-losses = []
-NUM_EPISODES = 100000
-episode_reward = 0
+# remember = ReplayBuffer(64, 100000)
+# r = Robot(400, 400)
+# model = DQL(0.99, 4, 4)
+# losses = []
+# NUM_EPISODES = 100000
+# episode_reward = 0
+#
+# state = r.get_state()
+# all_rewards = []
+# alpha = 0.99
+#
+# for j in range(1, NUM_EPISODES):
+#
+#     action = model.act(state)
+#     next_state, reward, done = r.step(action)
+#     remember.add(state, action, reward, next_state, done)
+#     state = r.get_state()  # s'
+#     episode_reward += reward
+#
+#     if done:
+#         state = r.reset()
+#         all_rewards.append(episode_reward)
+#         episode_reward = 0
+#
+#     if len(remember.memory) > remember.batch_size:
+#         loss = model.compute_loss(remember)
+#         losses.append(loss.item())
+#
+#     if j % 100 == 0:
+#         print(j, model.epsilon, sum(all_rewards) /
+#               len(all_rewards), sum(losses)/len(losses))
+#
+#         model.epsilon *= alpha
 
-state = r.get_state()
-all_rewards = []
-alpha = 0.99
 
-for j in range(1, NUM_EPISODES):
-
-    action = model.act(state)
-    next_state, reward, done = r.step(action)
-    remember.add(state, action, reward, next_state, done)
-    state = r.get_state()  # s'
-    episode_reward += reward
-
-    if done:
-        state = r.reset()
-        all_rewards.append(episode_reward)
-        episode_reward = 0
-
-    if len(remember.memory) > remember.batch_size:
-        loss = model.compute_loss(remember)
-        losses.append(loss.item())
-
-    if j % 100 == 0:
-        print(j, model.epsilon, sum(all_rewards) /
-              len(all_rewards), sum(losses)/len(losses))
-
-        model.epsilon *= alpha
-
-
-###########################
-# DQN
-##########################        
-remember = ReplayBuffer(32, 1000)
-r = Robot(400, 400)
+# ###########################
+# # DQN
+# ##########################
+PATH = './net.pth'
+remember = ReplayBuffer(100, 10000)
+r = Robot(600, 600)
 model = DQN(0.99, 4, 4)
 losses = []
-NUM_EPISODES = 100000
+NUM_EPISODES = 1000000
 episode_reward = 0
 
-state = r.get_state()
+
 all_rewards = []
+max_reward = 0
 alpha = 0.99
+NUM_TRAJECTORY = 20
 
 for j in range(1, NUM_EPISODES):
 
-    action = model.act(state)
-    next_state, reward, done = r.step(action)
-    remember.add(state, action, reward, next_state, done)
-    state = r.get_state()  # s'
-    episode_reward += reward
+    state = r.reset()
+    for t in range(1,NUM_TRAJECTORY):
 
-    if done:
-        state = r.reset()
-        all_rewards.append(episode_reward)
-        episode_reward = 0
+        action = model.act(state)
+        next_state, reward, done = r.step(action)
+        remember.add(state, action, reward, next_state, done)
+        state = r.get_state()  # s'
+        episode_reward += reward
+
+        if done:
+            state = r.reset()
+
+            if episode_reward > max_reward:
+                max_reward = episode_reward
+                model.save_model(PATH)
+            all_rewards.append(episode_reward)
+            episode_reward = 0
 
 
-    if len(remember.memory) > remember.batch_size:
-        loss = model.compute_loss(remember)
-        losses.append(loss.item())
+        if len(remember.memory) > remember.batch_size:
+            loss = model.compute_loss(remember)
+            losses.append(loss.item())
 
     if j % 200 == 0:
+        model.epsilon *= alpha
         print(j, model.epsilon, sum(all_rewards)/len(all_rewards), sum(losses)/len(losses))
         model.copy_weights()
-        model.epsilon *= alpha
