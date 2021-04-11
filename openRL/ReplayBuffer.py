@@ -33,5 +33,6 @@ class ReplayBuffer(Memory):
         self.memory.append((state, action, reward, next_state, done))
           
     def get_random(self):
-        return zip(*(random.sample(self.memory, self.batch_size)))
+        #return zip(*(random.sample(self.memory, self.batch_size)))
+        return random.sample(self.memory, self.batch_size)
     
