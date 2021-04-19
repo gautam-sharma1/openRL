@@ -2,28 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="826a6bec-4d9e-4354-b286-ab9ad6004ec3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth17800" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth195000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth21200" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth214000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth228000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth249000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth25500" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth26000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth268000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth307000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth340000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth413000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth593000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth612000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth758000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth839000" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth913000" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/2linkarm_training.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/2linkarm_validation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/images/apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/images/ghost.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/images/pacman.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/images/pikachu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/images/zombie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/imitation_learning.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/imitiation_learning2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthdd10" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthdd140" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthnew9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthnewest779" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthnewnewm13" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthokok12" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/net.pth300" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/net.pth800" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/pendulum_training.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/pendulum_validation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openRL/AI.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/AI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openRL/Agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/Agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openRL/ReplayBuffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/ReplayBuffer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openRL/net.pth" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/net.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,26 +37,38 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/openRL/ReplayBuffer.py">
+          <leaf>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/openRL/2linkarm_validation.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="540">
-                    <caret line="36" column="58" lean-forward="true" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+                  <state relative-caret-position="585">
+                    <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
                     <folding>
-                      <element signature="e#0#29#0" expanded="true" />
+                      <element signature="e#0#13#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
               </entry>
             </file>
             <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/openRL/Agent.py">
+              <entry file="file://$PROJECT_DIR$/openRL/2linkarm_training.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="115">
-                    <caret line="351" column="4" selection-start-line="351" selection-start-column="4" selection-end-line="351" selection-end-column="4" />
+                  <state relative-caret-position="225">
+                    <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
                     <folding>
-                      <element signature="e#61#96#0" expanded="true" />
+                      <element signature="e#0#13#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/openRL/pendulum_training.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="1065">
+                    <caret line="71" column="8" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="36" />
+                    <folding>
+                      <element signature="e#0#34#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -70,23 +84,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/openRL/AI.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/openRL/pendulum_validation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="248" column="41" lean-forward="true" selection-start-line="248" selection-start-column="41" selection-end-line="248" selection-end-column="41" />
+            <state relative-caret-position="105">
+              <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
               <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#0#48#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/openRL/__init__.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openRL/Agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="17" selection-start-column="17" selection-end-column="17" />
+            <state relative-caret-position="6809">
+              <caret line="471" column="34" lean-forward="true" selection-start-line="471" selection-start-column="34" selection-end-line="471" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openRL/AI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3475">
+              <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,31 +129,46 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>np</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/openRL/__init__.py" />
         <option value="$PROJECT_DIR$/openRL/ReplayBuffer.py" />
+        <option value="$PROJECT_DIR$/openRL/__init__.py" />
         <option value="$PROJECT_DIR$/openRL/Agent.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.txt" />
+        <option value="$PROJECT_DIR$/openRL/sample.proto" />
+        <option value="$PROJECT_DIR$/openRL/eval.py" />
+        <option value="$PROJECT_DIR$/openRL/validation.py" />
+        <option value="$PROJECT_DIR$/openRL/2linkarm_training.py" />
+        <option value="$PROJECT_DIR$/openRL/imitiation_learning2.py" />
+        <option value="$PROJECT_DIR$/openRL/imitation_learning.py" />
+        <option value="$PROJECT_DIR$/openRL/pendulum.py" />
         <option value="$PROJECT_DIR$/openRL/AI.py" />
+        <option value="$PROJECT_DIR$/openRL/2linkarm_validation.py" />
+        <option value="$PROJECT_DIR$/openRL/pendulum_training.py" />
+        <option value="$PROJECT_DIR$/openRL/pendulum_validation.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1158" />
-    <option name="y" value="928" />
-    <option name="width" value="1842" />
-    <option name="height" value="898" />
+    <option name="x" value="1156" />
+    <option name="y" value="862" />
+    <option name="width" value="1902" />
+    <option name="height" value="989" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -139,22 +183,35 @@
             </path>
             <path>
               <item name="openRL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openRL" type="462c0819:PsiDirectoryNode" />
+              <item name="openRL" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="openRL" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/openRL" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/openRL/models" />
+      <recent name="$PROJECT_DIR$/openRL/images" />
+      <recent name="$PROJECT_DIR$/openRL" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/openRL" />
     </key>
   </component>
@@ -170,8 +227,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Agent">
-    <configuration name="AI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.pendulum_validation">
+    <configuration name="2linkarm_validation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="openRL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -183,7 +240,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/AI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/2linkarm_validation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -213,10 +270,76 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="imitiation_learning2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="openRL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/openRL" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/imitiation_learning2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pendulum" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="openRL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/openRL" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/pendulum_training.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pendulum_validation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="openRL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/openRL" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/pendulum_validation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pendulum_validation" />
+        <item itemvalue="Python.pendulum" />
         <item itemvalue="Python.Agent" />
-        <item itemvalue="Python.AI" />
+        <item itemvalue="Python.2linkarm_validation" />
+        <item itemvalue="Python.imitiation_learning2" />
       </list>
     </recent_temporary>
   </component>
@@ -231,26 +354,34 @@
       <option name="presentableId" value="Default" />
       <updated>1617515334649</updated>
     </task>
+    <task id="LOCAL-00001" summary="cleaned up">
+      <created>1618280351142</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618280351142</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1158" y="928" width="1842" height="898" extended-state="0" />
+    <frame x="1114" y="822" width="1902" height="989" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.1823174" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.15311004" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5015723" side_tool="true" weight="0.19628252" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.08808933" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38127092" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39891893" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.037220843" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.03626943" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32953367" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32953367" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -266,41 +397,107 @@
       </list>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="cleaned up" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/openRL/Agent.py">
+    <entry file="file://$PROJECT_DIR$/openRL/images/ghost.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/sample.proto" />
+    <entry file="file://$PROJECT_DIR$/openRL/curve_1.gif" />
+    <entry file="file://$PROJECT_DIR$/openRL/ReplayBuffer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="351" column="4" selection-start-line="351" selection-start-column="4" selection-end-line="351" selection-end-column="4" />
+        <state relative-caret-position="60">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/imitiation_learning2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
-            <element signature="e#61#96#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/imitation_learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/2linkarm_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/2linkarm_training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/openRL/AI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="248" column="41" lean-forward="true" selection-start-line="248" selection-start-column="41" selection-end-line="248" selection-end-column="41" />
+        <state relative-caret-position="-3475">
+          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/ReplayBuffer.py">
+    <entry file="file://$PROJECT_DIR$/openRL/Agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="58" lean-forward="true" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+        <state relative-caret-position="6809">
+          <caret line="471" column="34" lean-forward="true" selection-start-line="471" selection-start-column="34" selection-end-line="471" selection-end-column="34" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/__init__.py">
+    <entry file="file://$PROJECT_DIR$/openRL/pendulum_training.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        <state relative-caret-position="1065">
+          <caret line="71" column="8" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/pendulum_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

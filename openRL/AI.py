@@ -12,13 +12,16 @@ class Algorithm(ABC):
     def __init__(self):
         super().__init__()
 
+    def __repr__(self):
+        return self.__name__()
+
     @abstractmethod
     def act(self,state):
         pass
-    #
-    # @abstractmethod
-    # def compute_single_loss(self,state, action, reward, next_state, done):
-    #     pass
+
+    @abstractmethod
+    def compute_single_loss(self,state, action, reward, next_state, done):
+        pass
 
     @abstractmethod
     def compute_batch_loss(self,state, action, reward, next_state, done):
@@ -98,12 +101,8 @@ class DQN(Algorithm):
     
         return loss
 
-    # def save_model(self,PATH):
-    #     # torch.save(self.actor.state_dict(),PATH)
-    #     Algorithm.save_model(self)
 
 # usage model = DQL()
-
 class DQL(Algorithm):                                                # width, height, output
     def __init__(self, epsilon, input_dim, output_dim, optimizer='Adam', loss_fcn=nn.MSELoss()):
         super().__init__()
@@ -113,6 +112,7 @@ class DQL(Algorithm):                                                # width, he
         self.input_dim = input_dim
         self.output_dim = output_dim
         self.model = Net(input_dim, output_dim)
+        #self.model = DQQN(40,40, 3)
         self.optimizer = optim.Adam(self.model.parameters(),lr=0.001)
         self.criterion = loss_fcn
         self.gamma = 0.9
@@ -139,17 +139,18 @@ class DQL(Algorithm):                                                # width, he
         self.epsilon = 80 - self.n_games
 
         if random.randint(0, 200) < self.epsilon:
-            move = random.randint(0, 2)
+            move = random.randint(0, self.output_dim-1)
             final_move = move
         else:
-
             prediction = self.model(state)
             move = torch.argmax(prediction).item()
-            final_move= move
+            final_move = move
 
         return final_move
 
-    def save_model(self,PATH ='./models/'):
+
+
+    def save_model(self,PATH ='./models/net.pth'):
         if not os.path.exists('models'):
             os.makedirs('models')
         torch.save(self.model.state_dict(), PATH)
@@ -189,16 +190,17 @@ class DQL(Algorithm):                                                # width, he
         state = torch.vstack(state)
         next_state = torch.vstack(next_state)
         t_action = self.tuple_to_tensor(action)
-        t_action = torch.tensor(t_action,dtype= int)
+        t_action = torch.tensor(t_action,dtype=torch.int64).clone().detach()
         t_reward = self.tuple_to_tensor(reward)
         t_done = self.tuple_to_tensor(done)
         q_values = self.model(state)
         next_q_values = self.model(next_state)
         q_value = q_values.gather(1, t_action)
         next_q_value = next_q_values.max(1)[0]
+        #next_q_value = next_q_value.view(-1,1)  # extra for DQN for images
         expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done)
-        loss = self.criterion(q_value, expected_q_value)
-        #loss = (q_value - expected_q_value.data).pow(2).mean()
+        #loss = self.criterion(q_value, expected_q_value)
+        loss = (q_value - expected_q_value.data).pow(2).mean()
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
@@ -210,7 +212,7 @@ class DQL(Algorithm):                                                # width, he
         t_done = torch.tensor(done,dtype=torch.int)
         q_values = self.model(state)
         next_q_values = self.model(next_state)
-        q_value = q_values[action]
+        q_value = q_values[action].view(1)
         next_q_value = next_q_values.max().item()
         expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done)
         loss = self.criterion(q_value,expected_q_value)
@@ -252,6 +254,7 @@ class DQL(Algorithm):                                                # width, he
 
 
 
+
 class Net(nn.Module):  # TODO improve the class definition
     def __init__(self, input_dim, output_dim):
         super(Net, self).__init__()
@@ -262,4 +265,49 @@ class Net(nn.Module):  # TODO improve the class definition
     def forward(self, x):
         x = F.relu(self.linear1(x))
         x = self.linear2(x)
+        return x
+
+# last good
+# class Net(nn.Module):  # TODO improve the class definition
+#     def __init__(self, input_dim, output_dim):
+#         super(Net, self).__init__()
+#         self.linear1 = nn.Linear(input_dim, 64)
+#         self.linear2 = nn.Linear(64, 256)
+#         self.linear3 = nn.Linear(256, 64)
+#         self.linear4 = nn.Linear(64, output_dim)
+#
+#
+#     def forward(self, x):
+#         x = F.relu(self.linear1(x))
+#         x = F.relu(self.linear2(x))
+#         x = F.relu(self.linear3(x))
+#         x = self.linear4(x)
+#         return x
+
+
+class Net32(nn.Module):  # TODO improve the class definition
+    def __init__(self, input_dim, output_dim):
+        super(Net32, self).__init__()
+        self.linear1 = nn.Linear(input_dim, 32)
+        self.linear2 = nn.Linear(32, output_dim)
+
+
+    def forward(self, x):
+        x = F.relu(self.linear1(x))
+        x = self.linear2(x)
+        return x
+
+
+class NNet(nn.Module):  # TODO improve the class definition
+    def __init__(self, input_dim, output_dim):
+        super(NNet, self).__init__()
+        self.linear1 = nn.Linear(input_dim, 64)
+        self.linear2 = nn.Linear(64, 256)
+        self.linear3 = nn.Linear(256, output_dim)
+
+
+    def forward(self, x):
+        x = F.relu(self.linear1(x))
+        x = F.relu(self.linear2(x))
+        x = self.linear3(x)
         return x

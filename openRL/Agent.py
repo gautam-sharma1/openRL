@@ -1,7 +1,7 @@
-# import torchvision.transforms as T
-# from PIL import Image
+import torchvision.transforms as T
+from PIL import Image
 from openRL.AI import Net, DQL, DQN
-from openRL.ReplayBuffer import ReplayBuffer
+from openRL.ReplayBuffer import ReplayBuffer,ReplayBufferImages
 import pygame
 import torch
 import math
@@ -25,6 +25,7 @@ class Direction(Enum):
     LEFT = 2
     UP = 3
     DOWN = 4
+
 
 class Agent(ABC):
     def __init__(self):
@@ -59,26 +60,37 @@ class Agent(ABC):
         pass
 
 
-
 class Robot(Agent):
     def __init__(self,
                  width,
                  height,
                  robot_color=(0, 0, 255),
-                 goal_color=(200, 0, 0), obstacle_color=(0, 255, 0)):
+                 obstacle_color=(200, 0, 0), goal_color=(0, 255, 0)):
         super().__init__()
         self.width = width
         self.height = height
         self.robot_color = robot_color
         self.goal_color = goal_color
         self.obstacle_color = obstacle_color
+        self.obstacle_list = []
         self.display = pygame.display.set_mode((self.width, self.height))
+        # self.obstacle_image = pygame.image.load('images/zombie.png')
+        # self.goal_image = pygame.image.load('images/apple.png')
+        # self.robot_image = pygame.image.load('images/pikachu.png')
+        pygame.display.set_caption("Path Planning using RL")
         self.step_size = 20
         self.side_size = 20
+        self.num_obstacles = 10
+        self.preprocess = T.Compose([
+            T.Grayscale(num_output_channels=3),
+            T.Resize(40 ,interpolation=Image.CUBIC),
+            T.ToTensor()])
         self.reset()
         self.clock = pygame.time.Clock()
         self.reward = 0
         self.n_games = 0
+
+
 
     __directions = {"RIGHT": 0, "LEFT": 1, "UP": 2, "DOWN": 3}
     __dir_list = ["RIGHT", "LEFT", "UP", "DOWN"]
@@ -96,6 +108,8 @@ class Robot(Agent):
         dir_r = self.direction == Direction.RIGHT
         dir_u = self.direction == Direction.UP
         dir_d = self.direction == Direction.DOWN
+
+        extra_state = [[pos.x < self.robot_pos.x, pos.x > self.robot_pos.x,pos.y < self.robot_pos.y,pos.y > self.robot_pos.y]for pos in self.obstacle_list]
 
         state = [
             # Danger straight
@@ -122,19 +136,32 @@ class Robot(Agent):
             dir_u,
             dir_d,
 
-            # Food location
-
+            # Goal location
             self.goal_pos.x < self.robot_pos.x,  # food left
             self.goal_pos.x > self.robot_pos.x,  # food right
             self.goal_pos.y < self.robot_pos.y,  # food up
-            self.goal_pos.y > self.robot_pos.y  # food down
+            self.goal_pos.y > self.robot_pos.y,  # food down
+
+
+            # # Food location
+            # self.obstacle_list[0].x < self.robot_pos.x,  # food left
+            # self.obstacle_list[0].x > self.robot_pos.x,  # food right
+            # self.obstacle_list[0].y < self.robot_pos.y,  # food up
+            # self.obstacle_list[0].y > self.robot_pos.y  # food down
+
         ]
+
+        for entries in extra_state:
+            state.extend(entries)
+
         return torch.Tensor(state)
 
     # def get_state(self):
-    #     # x,y,dx,dy
-    #     return torch.Tensor([self.robot_pos.x, self.robot_pos.y, self.robot_pos.x > self.goal_pos.x, self.robot_pos.y>self.goal_pos.y, self.goal_pos.x - self.robot_pos.x,
-    #                          self.goal_pos.y - self.robot_pos.y])
+    #     pygame.display.update()
+    #     strFormat = 'RGBA'
+    #     raw_str = pygame.image.tostring(self.display, strFormat, False)
+    #     image = Image.frombytes(strFormat, self.display.get_size(), raw_str)
+    #     return self.preprocess(image).unsqueeze(0)
 
     def __get_random_pos(self):
         return Point(
@@ -147,6 +174,7 @@ class Robot(Agent):
         self.direction = Direction.RIGHT  # right
         self.reward = 0
         self.goal_pos = self.__get_random_pos()
+        self.obstacle_list = [self.__get_random_pos() for _ in range(self.num_obstacles)]
         # while self.robot_pos.x == self.goal_pos[0] and self.robot_pos[
         #         1] == self.goal_pos[1]:
         #     self.goal_pos = self.__get_random_pos()
@@ -165,6 +193,10 @@ class Robot(Agent):
         reward = 0
 
         # went outside the boundary
+        if self.goal_pos in self.obstacle_list:
+            self.reset()
+            pass
+
         if self.terminate():
             reward = -10
             # print("Terminating!")
@@ -174,7 +206,7 @@ class Robot(Agent):
             # self.clock.tick(SPEED)
             return self.get_state(), reward, done
 
-        # reached goal
+
         elif self.robot_pos == self.goal_pos:
             reward = 10
             #reward = 1/(abs(self.robot_pos[0] - self.goal_pos[0]) +abs(self.robot_pos[1] - self.goal_pos[1]) + 0.01 )
@@ -200,6 +232,8 @@ class Robot(Agent):
             pt = self.robot_pos
         if pt.x > self.width - self.side_size or pt.x < 0 or pt.y > self.height - self.side_size or pt.y < 0:
             return True
+        elif pt in self.obstacle_list:
+            return True
 
         return False
 
@@ -208,58 +242,98 @@ class Robot(Agent):
         pygame.draw.rect(
             self.display, color,
             pygame.Rect(pos.x, pos.y, self.side_size, self.side_size))
+        #self.display.blit(image, (pos.x - 16, pos.y - 16))
+
     # This is fine
     def graphics(self):
         self.display.fill((0, 0, 0))
         self.draw_players(self.robot_pos, self.robot_color)  # draw robot
+        #self.display.blit(self.ghost_image, (self.goal_pos.x- 32, self.goal_pos.y - 32))
+        # self.draw_players(self.robot_pos,self.robot_image)
+        # self.draw_players(self.goal_pos, self.goal_image)
         self.draw_players(self.goal_pos, self.goal_color)  # draw goal
+        for pt in self.obstacle_list:
+            self.draw_players(pt, self.obstacle_color)  # draw goal
         pygame.display.flip()
 
     def move_goal(self):
         self.goal_pos = self.__get_random_pos()
 
     # TODO Need to change this as it is copied from online source
+    # def take_action(self, action):
+    #         # [straight, right, left]
+    #
+    #         clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
+    #         idx = clock_wise.index(self.direction)
+    #
+    #         if np.array_equal(action, [1, 0, 0]):
+    #             new_dir = clock_wise[idx]  # no change
+    #         elif np.array_equal(action, [0, 1, 0]):
+    #             next_idx = (idx + 1) % 4
+    #             new_dir = clock_wise[next_idx]  # right turn r -> d -> l -> u
+    #         else:  # [0, 0, 1]
+    #             next_idx = (idx - 1) % 4
+    #             new_dir = clock_wise[next_idx]  # left turn r -> u -> l -> d
+    #
+    #         self.direction = new_dir
+    #
+    #         x = self.robot_pos.x
+    #         y = self.robot_pos.y
+    #         if self.direction == Direction.RIGHT:
+    #             x += self.side_size
+    #         elif self.direction == Direction.LEFT:
+    #             x -= self.side_size
+    #         elif self.direction == Direction.DOWN:
+    #             y += self.side_size
+    #         elif self.direction == Direction.UP:
+    #             y -= self.side_size
+    #
+    #         self.robot_pos = Point(x, y)
     def take_action(self, action):
-            # [straight, right, left]
+        # [straight, right, left]
 
-            clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
-            idx = clock_wise.index(self.direction)
+        clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
+        idx = clock_wise.index(self.direction)
 
-            if np.array_equal(action, [1, 0, 0]):
-                new_dir = clock_wise[idx]  # no change
-            elif np.array_equal(action, [0, 1, 0]):
-                next_idx = (idx + 1) % 4
-                new_dir = clock_wise[next_idx]  # right turn r -> d -> l -> u
-            else:  # [0, 0, 1]
-                next_idx = (idx - 1) % 4
-                new_dir = clock_wise[next_idx]  # left turn r -> u -> l -> d
+        if action == 1:
+            new_dir = clock_wise[idx]  # no change
+        elif action == 2:
+            next_idx = (idx + 1) % 4
+            new_dir = clock_wise[next_idx]  # right turn r -> d -> l -> u
+        else:  # [0, 0, 1]
+            next_idx = (idx - 1) % 4
+            new_dir = clock_wise[next_idx]  # left turn r -> u -> l -> d
 
-            self.direction = new_dir
+        self.direction = new_dir
 
-            x = self.robot_pos.x
-            y = self.robot_pos.y
-            if self.direction == Direction.RIGHT:
-                x += self.side_size
-            elif self.direction == Direction.LEFT:
-                x -= self.side_size
-            elif self.direction == Direction.DOWN:
-                y += self.side_size
-            elif self.direction == Direction.UP:
-                y -= self.side_size
+        x = self.robot_pos.x
+        y = self.robot_pos.y
+        if self.direction == Direction.RIGHT:
+            x += self.side_size
+        elif self.direction == Direction.LEFT:
+            x -= self.side_size
+        elif self.direction == Direction.DOWN:
+            y += self.side_size
+        elif self.direction == Direction.UP:
+            y -= self.side_size
 
-            self.robot_pos = Point(x, y)
+        self.robot_pos = Point(x, y)
+
+    # def display_state(self,state):
+    #     Image.
+
     # def take_action(self, action):
     #     x = self.robot_pos.x
     #     y = self.robot_pos.y
     #     if action == 0:  # RIGHT
-    #         x += self.step_size
+    #         x += self.side_size
     #     elif action == 1:  # LEFT
-    #         x -= self.step_size
+    #         x -= self.side_size
     #
     #     elif action == 2:  # UP
-    #         y -= self.step_size
+    #         y -= self.side_size
     #     elif action == 3:  # DOWN
-    #         y += self.step_size
+    #         y += self.side_size
     #
     #     # elif action == 4:  # DIAGONAL LOWER RIGHT
     #     #     self.robot_pos[0] += self.step_size
@@ -286,101 +360,83 @@ class Robot(Agent):
 
 # note: Run any one of the below algos. Be sure to comment the other one out
 ###################################
-# Q-Learning with neural network  #
-###################################
-# remember = ReplayBuffer(64, 100000)
-# r = Robot(400, 400)
-# model = DQL(0.99, 4, 4)
-# losses = []
-# NUM_EPISODES = 100000
-# episode_reward = 0
-#
-# state = r.get_state()
-# all_rewards = []
-# alpha = 0.99
-#
-# for j in range(1, NUM_EPISODES):
-#
-#     action = model.act(state)
-#     next_state, reward, done = r.step(action)
-#     remember.add(state, action, reward, next_state, done)
-#     state = r.get_state()  # s'
-#     episode_reward += reward
-#
-#     if done:
-#         state = r.reset()
-#         all_rewards.append(episode_reward)
-#         episode_reward = 0
-#
-#     if len(remember.memory) > remember.batch_size:
-#         loss = model.compute_loss(remember)
-#         losses.append(loss.item())
-#
-#     if j % 100 == 0:
-#         print(j, model.epsilon, sum(all_rewards) /
-#               len(all_rewards), sum(losses)/len(losses))
-#
-#         model.epsilon *= alpha
-
 
 # ###########################
 # # DQN
 # ##########################
-PATH = './net'
-remember = ReplayBuffer(10, 1000000)
-r = Robot(400, 400)
+if __name__=="__main__":
+    transform = T.Compose([
+                        T.Grayscale(num_output_channels=1),
+                        T.Resize((40,40), interpolation=Image.CUBIC),
+                        T.ToTensor()])
 
-model = DQL(1, 11, 3)
-losses = []
-NUM_EPISODES = 20000
-episode_reward = 0
+    PATH = './net'
+    remember = ReplayBuffer( 100, 1000000)
+    r = Robot(400, 400)
+
+    model = DQL(1, 51, 3)
+
+    losses = []
+    NUM_EPISODES = 20000
+    episode_reward = 0
 
 
-all_rewards = []
-max_reward = 0
-alpha = 0.99
-state = r.reset()
-print(state)
+    all_rewards = []
+    max_reward = 0
+    alpha = 0.99
+    # state = r.reset()
 
-NUM_TRAJECTORY = 20
 
-while True:
+    NUM_TRAJECTORY = 20
+    j = 0
+    while True:
 
-    state = r.get_state()
-    action = model.act(state)
-    next_state, reward, done = r.step(action)
-    model.compute_single_loss(state, action, reward, next_state, done)
-    #model.train_short_memory(state, action, reward, next_state, done)
-    remember.add(state, action, reward, next_state, done)
-    #state = r.get_state()  # s'
-
-    #episode_reward += reward
-    if reward > max_reward:
-        max_reward = reward
-        model.save_model(PATH)
-        # print(j, model.epsilon, reward)
-        print('saving!...')
-    all_rewards.append(reward)
-
-    if done :
+        j += 1
         state = r.reset()
-        all_rewards.append(episode_reward)
-        episode_reward = 0
-        model.n_games += 1
+        # print(state.shape)
+        # im = T.ToPILImage()(state.squeeze(0))
+        # im.show()
+        # input()
+        for i in range(40):
+            state = r.get_state()  # s'
+            action = model.act(state)
+            next_state, reward, done = r.step(action)
+            model.compute_single_loss(state, action, reward, next_state, done)
+            #model.train_short_memory(state, action, reward, next_state, done)
+            remember.add(state, action, reward, next_state, done)
 
 
-        #model.train_long_memory(remember)
-        # loss = model.compute_loss(remember)
-        # losses.append(loss.item())
-    if len(remember.memory) > remember.batch_size:
-        state, action, reward, next_state, done = zip(*remember.get_random())
-        loss = model.compute_loss(state, action, reward, next_state, done)
-        losses.append(loss.item())
+            #episode_reward += reward
+            if reward > max_reward:
+                max_reward = reward
+                model.save_model(PATH)
+                # print(j, model.epsilon, reward)
+                print('saving!...')
+            all_rewards.append(reward)
+
+            if done :
+                state = r.reset()
+                all_rewards.append(episode_reward)
+                episode_reward = 0
+                model.n_games += 1
+
+
+            #model.train_long_memory(remember)
+            # loss = model.compute_loss(remember)
+            # losses.append(loss.item())
+            if len(remember.memory) > remember.batch_size:
+                state, action, reward, next_state, done = zip(*remember.get_random())
+
+                loss = model.compute_batch_loss(state, action, reward, next_state, done)
+
+                losses.append(loss.item())
+
+        if j%200 == 0:
+            model.epsilon *= alpha
 
 
 
-plt.plot(all_rewards)
-plt.plot(losses)
+
 ########
 # Eval script
 ########
