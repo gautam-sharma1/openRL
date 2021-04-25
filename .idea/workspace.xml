@@ -2,30 +2,74 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="826a6bec-4d9e-4354-b286-ab9ad6004ec3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/openRL/2linkarm_training.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/2linkarm_validation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/images/apple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/images/ghost.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/images/pacman.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/images/pikachu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/images/zombie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/imitation_learning.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/imitiation_learning2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthdd10" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthdd140" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthnew9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthnewest779" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthnewnewm13" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthokok12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth300" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/net.pth800" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/pendulum_training.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openRL/pendulum_validation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/Agents.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/data_collection/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/data_collection/two_link_arm_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/extras/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/extras/pendulum_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/extras/pendulum_training.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthb965" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthb997" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthc146" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthc241" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthf46260" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/models/net.pthlast4953" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/training/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/training/obstacle_avoidance.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/training/path_planning_agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/validation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/validation/three_link_arm_validation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openRL/validation/two_link_arm_validation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/2linkarm_training.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/2linkarm_validation.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/openRL/AI.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/AI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openRL/Agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/Agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openRL/ReplayBuffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/ReplayBuffer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/Agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/ReplayBuffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/Memory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openRL/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/imitation_learning.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/imitiation_learning2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/input.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/input.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/imitation/net.pthb0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/imitation/net.pthb1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth100" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1000" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1100" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1200" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1300" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1400" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1500" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1600" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1700" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth1800" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth200" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth300" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth300100" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth3s100" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth3s200" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth3s300" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth400" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth500" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth600" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth700" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth800" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pth900" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pthdd10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pthdd140" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pthnew9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pthnewest779" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pthnewest862" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pthnewnewm13" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/net.pthokok12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/models/pendulum.pth10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/net" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/net.pth300" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/net.pth800" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/output.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/output.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/pendulum_training.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/openRL/pendulum_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/openRL/extras/pendulum_validation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,10 +83,19 @@
         <state>
           <leaf>
             <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/openRL/2linkarm_validation.py">
+              <entry file="file://$PROJECT_DIR$/openRL/validation/three_link_arm_validation.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="585">
-                    <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+                  <state>
+                    <caret column="37" selection-start-column="37" selection-end-column="37" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/openRL/data_collection/three_link_arm_data.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="900">
+                    <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
                     <folding>
                       <element signature="e#0#13#0" expanded="true" />
                     </folding>
@@ -51,10 +104,22 @@
               </entry>
             </file>
             <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/openRL/2linkarm_training.py">
+              <entry file="file://$PROJECT_DIR$/openRL/AI.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="225">
-                    <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+                  <state relative-caret-position="475">
+                    <caret line="261" column="46" lean-forward="true" selection-start-line="261" selection-start-column="46" selection-end-line="261" selection-end-column="46" />
+                    <folding>
+                      <element signature="e#0#12#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/openRL/training/path_planning_agent.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="539">
+                    <caret line="36" column="38" lean-forward="true" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
                     <folding>
                       <element signature="e#0#13#0" expanded="true" />
                     </folding>
@@ -62,13 +127,33 @@
                 </provider>
               </entry>
             </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+    <window id="2">
+      <content type="file-editors">
+        <state>
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
             <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/openRL/pendulum_training.py">
+              <entry file="file://$PROJECT_DIR$/openRL/validation/two_link_arm_validation.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1065">
-                    <caret line="71" column="8" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="36" />
+                  <state relative-caret-position="742">
+                    <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="56" />
                     <folding>
-                      <element signature="e#0#34#0" expanded="true" />
+                      <element signature="e#210#223#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/openRL/data_collection/three_link_arm_data.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="2655">
+                    <caret line="177" column="32" selection-start-line="177" selection-start-column="32" selection-end-line="177" selection-end-column="32" />
+                    <folding>
+                      <element signature="e#0#13#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -85,37 +170,55 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/openRL/pendulum_validation.py">
+        <entry file="file://$PROJECT_DIR$/openRL/training/obstacle_avoidance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+            <state relative-caret-position="-1202">
+              <caret line="154" column="13" lean-forward="true" selection-start-line="154" selection-start-column="13" selection-end-line="154" selection-end-column="13" />
               <folding>
-                <element signature="e#0#48#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/openRL/Agent.py">
+        <entry file="file://$PROJECT_DIR$/openRL/Agents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6809">
-              <caret line="471" column="34" lean-forward="true" selection-start-line="471" selection-start-column="34" selection-end-line="471" selection-end-column="34" />
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openRL/extras/pendulum_training.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
-                <element signature="e#0#34#0" expanded="true" />
+                <element signature="e#120#149#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/openRL/AI.py">
+        <entry file="file://$PROJECT_DIR$/openRL/data_collection/two_link_arm_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3475">
-              <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="330">
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/openRL/Memory.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -132,6 +235,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>np</find>
+      <find>goal reac</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,29 +244,49 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/openRL/ReplayBuffer.py" />
         <option value="$PROJECT_DIR$/openRL/__init__.py" />
-        <option value="$PROJECT_DIR$/openRL/Agent.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.txt" />
         <option value="$PROJECT_DIR$/openRL/sample.proto" />
         <option value="$PROJECT_DIR$/openRL/eval.py" />
         <option value="$PROJECT_DIR$/openRL/validation.py" />
-        <option value="$PROJECT_DIR$/openRL/2linkarm_training.py" />
         <option value="$PROJECT_DIR$/openRL/imitiation_learning2.py" />
-        <option value="$PROJECT_DIR$/openRL/imitation_learning.py" />
         <option value="$PROJECT_DIR$/openRL/pendulum.py" />
-        <option value="$PROJECT_DIR$/openRL/AI.py" />
+        <option value="$PROJECT_DIR$/docs/index.rst" />
+        <option value="$PROJECT_DIR$/src/openRL/2linkarm_training.py" />
+        <option value="$PROJECT_DIR$/src/openRL/pendulum_training.py" />
+        <option value="$PROJECT_DIR$/src/openRL/__init__.py" />
+        <option value="$PROJECT_DIR$/src/openRL/training/__init__.py" />
+        <option value="$PROJECT_DIR$/src/openRL/2linkarm_validation.py" />
+        <option value="$PROJECT_DIR$/openRL/2linkarm_training.py" />
         <option value="$PROJECT_DIR$/openRL/2linkarm_validation.py" />
+        <option value="$PROJECT_DIR$/openRL/pendulum_test.py" />
         <option value="$PROJECT_DIR$/openRL/pendulum_training.py" />
+        <option value="$PROJECT_DIR$/openRL/three_link_arm_training.py" />
+        <option value="$PROJECT_DIR$/openRL/two_linkarm_validation.py" />
+        <option value="$PROJECT_DIR$/openRL/three_link_arm_validation.py" />
+        <option value="$PROJECT_DIR$/openRL/imitation_learning.py" />
+        <option value="$PROJECT_DIR$/openRL/two_linkarm_training.py" />
+        <option value="$PROJECT_DIR$/openRL/Agent.py" />
+        <option value="$PROJECT_DIR$/openRL/data_collection/two_linkarm_training.py" />
+        <option value="$PROJECT_DIR$/openRL/validation/three_link_arm_validation.py" />
+        <option value="$PROJECT_DIR$/openRL/validation/two_link_arm_validation.py" />
+        <option value="$PROJECT_DIR$/openRL/data_collection/three_link_arm_data.py" />
         <option value="$PROJECT_DIR$/openRL/pendulum_validation.py" />
+        <option value="$PROJECT_DIR$/openRL/data_collection/two_link_arm_data.py" />
+        <option value="$PROJECT_DIR$/openRL/path_planning_agent.py" />
+        <option value="$PROJECT_DIR$/openRL/Agents.py" />
+        <option value="$PROJECT_DIR$/openRL/ReplayBuffer.py" />
+        <option value="$PROJECT_DIR$/openRL/Memory.py" />
+        <option value="$PROJECT_DIR$/openRL/AI.py" />
+        <option value="$PROJECT_DIR$/openRL/training/obstacle_avoidance.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1156" />
-    <option name="y" value="862" />
-    <option name="width" value="1902" />
-    <option name="height" value="989" />
+    <option name="x" value="1128" />
+    <option name="y" value="822" />
+    <option name="width" value="1872" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -185,7 +309,13 @@
               <item name="openRL" type="b2602c69:ProjectViewProjectNode" />
               <item name="openRL" type="462c0819:PsiDirectoryNode" />
               <item name="openRL" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="openRL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="openRL" type="462c0819:PsiDirectoryNode" />
+              <item name="openRL" type="462c0819:PsiDirectoryNode" />
+              <item name="training" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="openRL" type="b2602c69:ProjectViewProjectNode" />
@@ -207,9 +337,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/openRL/models" />
-      <recent name="$PROJECT_DIR$/openRL/images" />
+      <recent name="$PROJECT_DIR$/openRL/training" />
+      <recent name="$PROJECT_DIR$/openRL/extras" />
       <recent name="$PROJECT_DIR$/openRL" />
+      <recent name="$PROJECT_DIR$/openRL/files" />
+      <recent name="$PROJECT_DIR$/openRL/validation" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/openRL" />
@@ -227,8 +359,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pendulum_validation">
-    <configuration name="2linkarm_validation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.obstacle_avoidance">
+    <configuration name="obstacle_avoidance" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="openRL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -236,11 +368,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/openRL" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/openRL/training" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/2linkarm_validation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/training/obstacle_avoidance.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -249,7 +381,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Agent" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="three_link_arm_training" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="openRL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -261,7 +393,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/Agent.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/data_collection/three_link_arm_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -270,7 +402,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="imitiation_learning2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="three_link_arm_validation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="openRL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -282,7 +414,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/imitiation_learning2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/validation/three_link_arm_validation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -291,7 +423,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pendulum" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="two_linkarm_training" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="openRL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -299,11 +431,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/openRL" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/openRL/data_collection" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/pendulum_training.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/data_collection/two_link_arm_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -312,7 +444,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pendulum_validation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="two_linkarm_validation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="openRL" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -324,7 +456,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/pendulum_validation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/openRL/validation/two_link_arm_validation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -335,11 +467,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pendulum_validation" />
-        <item itemvalue="Python.pendulum" />
-        <item itemvalue="Python.Agent" />
-        <item itemvalue="Python.2linkarm_validation" />
-        <item itemvalue="Python.imitiation_learning2" />
+        <item itemvalue="Python.obstacle_avoidance" />
+        <item itemvalue="Python.two_linkarm_training" />
+        <item itemvalue="Python.two_linkarm_validation" />
+        <item itemvalue="Python.three_link_arm_validation" />
+        <item itemvalue="Python.three_link_arm_training" />
       </list>
     </recent_temporary>
   </component>
@@ -364,24 +496,32 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="1114" y="822" width="1902" height="989" extended-state="0" />
-    <editor active="true" />
+    <frame x="1128" y="822" width="1872" height="1057" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.15311004" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.18962723" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5015723" side_tool="true" weight="0.19628252" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38127092" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39891893" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.5810811" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49972987" weight="0.253886" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49972987" weight="0.23108809" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.03626943" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32953367" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32953367" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49972987" weight="0.32953367" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49972987" weight="0.03626943" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.23761262" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002701" side_tool="true" visible="true" weight="0.253886" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49972987" weight="0.8082902" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -402,101 +542,180 @@
     <option name="LAST_COMMIT_MESSAGE" value="cleaned up" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/openRL/images/ghost.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/openRL/images/ghost.png" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/openRL/sample.proto" />
     <entry file="file://$PROJECT_DIR$/openRL/curve_1.gif" />
-    <entry file="file://$PROJECT_DIR$/openRL/ReplayBuffer.py">
+    <entry file="file://$PROJECT_DIR$/docs/index.rst">
+      <provider selected="true" editor-type-id="restructured-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/_build/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        <state relative-caret-position="211">
+          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/imitiation_learning2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/imitation_learning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/openRL/training/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/openRL/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/2linkarm_validation.py">
+    <entry file="file://$PROJECT_DIR$/docs/Makefile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/make.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/figures/threeLinkArmTheta.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/imitation_learning.py" />
+    <entry file="file://$PROJECT_DIR$/openRL/imitiation_learning2.py" />
+    <entry file="file://$PROJECT_DIR$/openRL/files/3link_pendulum_output_new.pkl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/files/2link_pendulum_output_new.pkl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/files/2link_pendulum_input_new.pkl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/files/3link_pendulum_input_new.pkl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-466">
+          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/extras/pendulum_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/2linkarm_training.py">
+    <entry file="file://$PROJECT_DIR$/openRL/extras/pendulum_validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        <state relative-caret-position="390">
+          <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#48#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/extras/pendulum_training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#120#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/data_collection/two_link_arm_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/Memory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/validation/two_link_arm_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="56" />
+          <folding>
+            <element signature="e#210#223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/Agents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openRL/validation/three_link_arm_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-start-column="37" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/openRL/AI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3475">
-          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        <state relative-caret-position="475">
+          <caret line="261" column="46" lean-forward="true" selection-start-line="261" selection-start-column="46" selection-end-line="261" selection-end-column="46" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/Agent.py">
+    <entry file="file://$PROJECT_DIR$/openRL/training/path_planning_agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6809">
-          <caret line="471" column="34" lean-forward="true" selection-start-line="471" selection-start-column="34" selection-end-line="471" selection-end-column="34" />
+        <state relative-caret-position="539">
+          <caret line="36" column="38" lean-forward="true" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/pendulum_training.py">
+    <entry file="file://$PROJECT_DIR$/openRL/data_collection/three_link_arm_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="8" selection-start-line="71" selection-start-column="8" selection-end-line="71" selection-end-column="36" />
+        <state relative-caret-position="900">
+          <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/openRL/pendulum_validation.py">
+    <entry file="file://$PROJECT_DIR$/openRL/training/obstacle_avoidance.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        <state relative-caret-position="-1202">
+          <caret line="154" column="13" lean-forward="true" selection-start-line="154" selection-start-column="13" selection-end-line="154" selection-end-column="13" />
           <folding>
-            <element signature="e#0#48#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -9,6 +9,10 @@ from abc import ABC, abstractmethod
 
 
 class Algorithm(ABC):
+    """
+    Abstract class.
+    """
+
     def __init__(self):
         super().__init__()
 
@@ -16,19 +20,19 @@ class Algorithm(ABC):
         return self.__name__()
 
     @abstractmethod
-    def act(self,state):
+    def act(self, state):
         pass
 
     @abstractmethod
-    def compute_single_loss(self,state, action, reward, next_state, done):
+    def compute_single_loss(self, state, action, reward, next_state, done):
         pass
 
     @abstractmethod
-    def compute_batch_loss(self,state, action, reward, next_state, done):
+    def compute_batch_loss(self, state, action, reward, next_state, done):
         pass
 
     @abstractmethod
-    def save_model(self , PATH ='./models/'):
+    def save_model(self, PATH='./models/'):
         pass
 
     @staticmethod
@@ -37,7 +41,6 @@ class Algorithm(ABC):
         for i in input:
             l.append([i])
         return torch.FloatTensor(l)
-
 
 
 # TODO:
@@ -51,7 +54,10 @@ class PPO:
 
 
 class DQN(Algorithm):
-    def __init__(self, epsilon, input_dim, output_dim, optimizer='Adam', loss_fcn=nn.MSELoss):
+    """
+        Deep Q-Networks Algorithm
+    """
+    def __init__(self, epsilon, input_dim, output_dim, optimizer='Adam', loss_fcn=nn.MSELoss()):
         super().__init__()
         self.epsilon = epsilon
         self.optim = optim
@@ -60,50 +66,112 @@ class DQN(Algorithm):
         self.actor = Net(input_dim, output_dim)
         self.critic = Net(input_dim, output_dim)
         self.critic.load_state_dict(self.actor.state_dict())
-        self.optimizer = optim.Adam(self.actor.parameters())
+        self.optimizer = optim.Adam(self.actor.parameters(),lr=0.0001)
+        self.n_games = 0
         self.gamma = 0.9
-
+        self.criterion = loss_fcn
 
     def act(self, state):
         if random.random() > self.epsilon:
             output = self.actor(state)
             return torch.argmax(output)
         else:
-            return random.randint(0, self.output_dim-1)
+            return random.randint(0, self.output_dim - 1)
+    # def act(self, state):
+    #     self.epsilon = 80 - self.n_games
+    #
+    #     if random.randint(0, 200) < self.epsilon:
+    #         move = random.randint(0, self.output_dim - 1)
+    #         final_move = move
+    #     else:
+    #         prediction = self.actor(state)
+    #         move = torch.argmax(prediction).item()
+    #         final_move = move
+    #
+    #     return final_move
 
-    
     def copy_weights(self):
         self.critic.load_state_dict(self.actor.state_dict())
 
+    # def compute_loss(self, replay_buffer):
+    #
+    #     state, action, reward, next_state, done = replay_buffer.get_random()
+    #     state = torch.vstack(state)
+    #     next_state = torch.vstack(next_state)
+    #     t_action = self.tuple_to_tensor(action)
+    #     t_reward = self.tuple_to_tensor(reward)
+    #     t_done = self.tuple_to_tensor(done)
+    #     q_values = self.actor(state)  # q(s)
+    #
+    #     next_q_values = self.critic(next_state)  # q(s')
+    #
+    #     q_value = q_values.gather(1, t_action)
+    #     next_q_value = next_q_values.max(1)[0]
+    #
+    #     expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done)
+    #     loss = (q_value - expected_q_value.data).pow(2).mean()
+    #
+    #     self.optimizer.zero_grad()
+    #     loss.backward()
+    #     self.optimizer.step()
+    #
+    #     return loss
 
 
-    def compute_loss(self, replay_buffer):
-        
-        state, action, reward, next_state, done = replay_buffer.get_random()
+    def compute_batch_loss(self, state, action, reward, next_state, done):
+
         state = torch.vstack(state)
         next_state = torch.vstack(next_state)
         t_action = self.tuple_to_tensor(action)
+        t_action = torch.tensor(t_action, dtype=torch.int64).clone().detach()
         t_reward = self.tuple_to_tensor(reward)
         t_done = self.tuple_to_tensor(done)
-        q_values = self.actor(state)             # q(s)
-        
-        next_q_values = self.critic(next_state) # q(s')
-       
+        q_values = self.actor(state)
+        next_q_values = self.critic(next_state)
         q_value = q_values.gather(1, t_action)
         next_q_value = next_q_values.max(1)[0]
-        
+        # next_q_value = next_q_value.view(-1,1)  # extra for DQN for images
         expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done)
+        # loss = self.criterion(q_value, expected_q_value)
         loss = (q_value - expected_q_value.data).pow(2).mean()
-
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
-    
         return loss
+
+    def compute_single_loss(self, state, action, reward, next_state, done):
+
+        t_reward = torch.tensor(reward, dtype=torch.float16)
+        t_done = torch.tensor(done, dtype=torch.int)
+        q_values = self.actor(state)
+        next_q_values = self.critic(next_state)
+        q_value = q_values[action].view(1)
+        next_q_value = next_q_values.max().item()
+        expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done)
+        loss = self.criterion(q_value, expected_q_value)
+        # loss = (q_value - expected_q_value.data).pow(2).mean()
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+        return loss
+
+    def save_model(self, PATH='./models/net.pth'):
+        if not os.path.exists('models'):
+            os.makedirs('models')
+        torch.save(self.actor.state_dict(), PATH)
+
+# class ValueIteration():
+#     def __init__(self):
+#         self.state_list = [0 for _ in range(360)]
+#         self.transition_probability = [0.5,0.5]
+#
+#     def act(self):
+
+
 
 
 # usage model = DQL()
-class DQL(Algorithm):                                                # width, height, output
+class DQL(Algorithm):  # width, height, output
     def __init__(self, epsilon, input_dim, output_dim, optimizer='Adam', loss_fcn=nn.MSELoss()):
         super().__init__()
         self.epsilon = epsilon
@@ -112,34 +180,33 @@ class DQL(Algorithm):                                                # width, he
         self.input_dim = input_dim
         self.output_dim = output_dim
         self.model = Net(input_dim, output_dim)
-        #self.model = DQQN(40,40, 3)
-        self.optimizer = optim.Adam(self.model.parameters(),lr=0.001)
+        self.optimizer = optim.Adam(self.model.parameters(), lr=0.0001)
         self.criterion = loss_fcn
         self.gamma = 0.9
 
     # TODO: Need to change it. It's copied
     def act(self, state):
-    #     self.epsilon = 80 - self.n_games
-    #     final_move = [0,0,0]
-    #     if random.randint(0, 200) < self.epsilon:
-    #         move = random.randint(0, 2)
-    #         final_move[move] = 1
-    #     else:
-    #
-    #         prediction = self.model(state)
-    #         move = torch.argmax(prediction).item()
-    #         final_move[move] = 1
-    #
-    #     return final_move
-    #     if random.random() > self.epsilon:
-    #         output = self.model(state)
-    #         return torch.argmax(output)
-    #     else:
-    #         return random.randint(0, self.output_dim-1)
+        #     self.epsilon = 80 - self.n_games
+        #     final_move = [0,0,0]
+        #     if random.randint(0, 200) < self.epsilon:
+        #         move = random.randint(0, 2)
+        #         final_move[move] = 1
+        #     else:
+        #
+        #         prediction = self.model(state)
+        #         move = torch.argmax(prediction).item()
+        #         final_move[move] = 1
+        #
+        #     return final_move
+        # if random.random() > self.epsilon:
+        #     output = self.model(state)
+        #     return torch.argmax(output)
+        # else:
+        #     return random.randint(0, self.output_dim-1)
         self.epsilon = 80 - self.n_games
 
         if random.randint(0, 200) < self.epsilon:
-            move = random.randint(0, self.output_dim-1)
+            move = random.randint(0, self.output_dim - 1)
             final_move = move
         else:
             prediction = self.model(state)
@@ -148,9 +215,7 @@ class DQL(Algorithm):                                                # width, he
 
         return final_move
 
-
-
-    def save_model(self,PATH ='./models/net.pth'):
+    def save_model(self, PATH='./models/net.pth'):
         if not os.path.exists('models'):
             os.makedirs('models')
         torch.save(self.model.state_dict(), PATH)
@@ -185,44 +250,40 @@ class DQL(Algorithm):                                                # width, he
     #
     #     return loss
     #
-    def compute_batch_loss(self,state, action, reward, next_state, done):
+    def compute_batch_loss(self, state, action, reward, next_state, done):
 
         state = torch.vstack(state)
         next_state = torch.vstack(next_state)
         t_action = self.tuple_to_tensor(action)
-        t_action = torch.tensor(t_action,dtype=torch.int64).clone().detach()
+        t_action = torch.tensor(t_action, dtype=torch.int64).clone().detach()
         t_reward = self.tuple_to_tensor(reward)
         t_done = self.tuple_to_tensor(done)
         q_values = self.model(state)
         next_q_values = self.model(next_state)
-        q_value = q_values.gather(1, t_action)
+        q_value = q_values.gather(1, t_action).view(-1,1)
         next_q_value = next_q_values.max(1)[0]
-        #next_q_value = next_q_value.view(-1,1)  # extra for DQN for images
-        expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done)
-        #loss = self.criterion(q_value, expected_q_value)
-        loss = (q_value - expected_q_value.data).pow(2).mean()
+        next_q_value = next_q_value.view(-1,1)  # extra for DQN for images
+        expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done).view(-1,1)
+        loss = self.criterion(q_value, expected_q_value)
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
         return loss
 
-    def compute_single_loss(self,state, action, reward, next_state, done):
+    def compute_single_loss(self, state, action, reward, next_state, done):
 
-        t_reward = torch.tensor(reward,dtype=torch.float16)
-        t_done = torch.tensor(done,dtype=torch.int)
+        t_reward = torch.tensor(reward, dtype=torch.float16)
+        t_done = torch.tensor(done, dtype=torch.int)
         q_values = self.model(state)
         next_q_values = self.model(next_state)
-        q_value = q_values[action].view(1)
+        q_value = q_values[action].view(-1,1)
         next_q_value = next_q_values.max().item()
-        expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done)
-        loss = self.criterion(q_value,expected_q_value)
-        #loss = (q_value - expected_q_value.data).pow(2).mean()
+        expected_q_value = t_reward + self.gamma * next_q_value * (torch.LongTensor([1]) - t_done).view(-1,1)
+        loss = self.criterion(q_value, expected_q_value)
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
         return loss
-
-
 
     # # This is my own
     # def compute_batch_loss(self, state, action, reward, next_state, done):
@@ -252,37 +313,16 @@ class DQL(Algorithm):                                                # width, he
     #         return loss
 
 
-
-
-
 class Net(nn.Module):  # TODO improve the class definition
     def __init__(self, input_dim, output_dim):
         super(Net, self).__init__()
         self.linear1 = nn.Linear(input_dim, 256)
         self.linear2 = nn.Linear(256, output_dim)
 
-
     def forward(self, x):
         x = F.relu(self.linear1(x))
         x = self.linear2(x)
         return x
-
-# last good
-# class Net(nn.Module):  # TODO improve the class definition
-#     def __init__(self, input_dim, output_dim):
-#         super(Net, self).__init__()
-#         self.linear1 = nn.Linear(input_dim, 64)
-#         self.linear2 = nn.Linear(64, 256)
-#         self.linear3 = nn.Linear(256, 64)
-#         self.linear4 = nn.Linear(64, output_dim)
-#
-#
-#     def forward(self, x):
-#         x = F.relu(self.linear1(x))
-#         x = F.relu(self.linear2(x))
-#         x = F.relu(self.linear3(x))
-#         x = self.linear4(x)
-#         return x
 
 
 class Net32(nn.Module):  # TODO improve the class definition
@@ -291,6 +331,17 @@ class Net32(nn.Module):  # TODO improve the class definition
         self.linear1 = nn.Linear(input_dim, 32)
         self.linear2 = nn.Linear(32, output_dim)
 
+    def forward(self, x):
+        x = F.relu(self.linear1(x))
+        x = self.linear2(x)
+        return x
+
+
+class Net16(nn.Module):  # TODO improve the class definition
+    def __init__(self, input_dim, output_dim):
+        super(Net16, self).__init__()
+        self.linear1 = nn.Linear(input_dim, 16)
+        self.linear2 = nn.Linear(16, output_dim)
 
     def forward(self, x):
         x = F.relu(self.linear1(x))
@@ -305,9 +356,40 @@ class NNet(nn.Module):  # TODO improve the class definition
         self.linear2 = nn.Linear(64, 256)
         self.linear3 = nn.Linear(256, output_dim)
 
-
     def forward(self, x):
         x = F.relu(self.linear1(x))
         x = F.relu(self.linear2(x))
         x = self.linear3(x)
+        return x
+
+
+class Temp(nn.Module):  # TODO improve the class definition
+    def __init__(self, input_dim, output_dim):
+        super(Temp, self).__init__()
+        self.linear1 = nn.Linear(input_dim, 256)
+        self.linear2 = nn.Linear(256, 256)
+        self.linear3 = nn.Linear(256, 256)
+        self.linear4 = nn.Linear(256, output_dim)
+
+    def forward(self, x):
+        x = F.leaky_relu(self.linear1(x))
+        x = F.sigmoid(self.linear2(x))
+        x = F.leaky_relu(self.linear3(x))
+        x = self.linear4(x)
+        return x
+
+
+class Netleaky(nn.Module):  # TODO improve the class definition
+    def __init__(self, input_dim, output_dim):
+        super(Netleaky, self).__init__()
+        self.linear1 = nn.Linear(input_dim, 32)
+        self.linear2 = nn.Linear(32, 32)
+        self.linear3 = nn.Linear(32, 64)
+        self.linear4 = nn.Linear(64, output_dim)
+
+    def forward(self, x):
+        x = F.relu(self.linear1(x))
+        x = F.relu(self.linear2(x))
+        x = F.relu(self.linear3(x))
+        x = self.linear4(x)
         return x
